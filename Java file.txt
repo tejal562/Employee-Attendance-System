@@ -1,0 +1,30 @@
+import java.sql.*;
+
+public class AttendanceSystem {
+    private Connection conn;
+
+    public AttendanceSystem() {
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/your_database", "username", "password");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void markAttendance(int employeeID, String status) {
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Attendance (EmployeeID, Date, Status) VALUES (?, CURDATE(), ?)");
+            pstmt.setInt(1, employeeID);
+            pstmt.setString(2, status);
+            pstmt.executeUpdate();
+            System.out.println("Attendance marked successfully.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args) {
+        AttendanceSystem system = new AttendanceSystem();
+        system.markAttendance(101, "Present"); // Example: Marking attendance for employee with ID 101
+    }
+}

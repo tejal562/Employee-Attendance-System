@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class AttendanceUI {
+    private AttendanceSystem system;
+    private Scanner scanner;
+
+    public AttendanceUI() {
+        system = new AttendanceSystem();
+        scanner = new Scanner(System.in);
+    }
+
+    public void markAttendance() {
+        System.out.println("Enter Employee ID:");
+        int employeeID = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        System.out.println("Enter Status (Present/Absent):");
+        String status = scanner.nextLine();
+        system.markAttendance(employeeID, status);
+    }
+
+    public static void main(String[] args) {
+        AttendanceUI ui = new AttendanceUI();
+        ui.markAttendance();
+    }
+}

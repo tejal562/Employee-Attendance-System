@@ -1,0 +1,34 @@
+
+
+1. Database Design (SQL)
+
+In the SQL part, I have creating two tables: `Employees` and `Attendance`.
+
+- `Employees`: This table stores information about employees such as their ID, name, and department.
+- `Attendance`: This table records the attendance of employees. It includes an attendance ID, employee ID (to associate attendance records with employees), date, and status (whether the employee was present or absent).
+
+Each employee can have multiple attendance records associated with them, recorded by date.
+
+2. Java Application
+
+In the Java application, we're using JDBC (Java Database Connectivity) to interact with the MySQL database.
+
+- `AttendanceSystem` class: This class establishes a connection to the database and provides a method `markAttendance` to mark the attendance of an employee. It takes an employee ID and status (present/absent) as parameters and inserts a new attendance record into the `Attendance` table.
+
+- `main` method: In the `main` method, an instance of `AttendanceSystem` is created, and then attendance is marked for a sample employee (ID 101) with the status "Present". This is just for demonstration purposes.
+
+### 3. User Interface
+
+The user interface is kept simple with command-line input/output.
+
+- `AttendanceUI` class: This class interacts with the user to mark attendance. It prompts the user to input the employee ID and status (present/absent) and then calls the `markAttendance` method of the `AttendanceSystem` to mark the attendance.
+
+- `main` method: In the `main` method, an instance of `AttendanceUI` is created, and the `markAttendance` method is called to start marking attendance.
+
+Explanation Summary:
+
+- The database design defines the structure of the data storage.
+- The Java application connects to the database and provides methods to interact with it.
+- The user interface allows users to input data and interact with the application.
+
+Together, these components form a basic employee attendance system where attendance can be marked and stored in a database using Java and SQL.
